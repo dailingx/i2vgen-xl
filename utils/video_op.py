@@ -201,6 +201,7 @@ def save_i2vgen_video_safe(
                         if ratio > 0.4: continue
                     writer.append_data(frame)
                 writer.close()
+                print(f'video writer over, images: {len(images)}')
             break
         except Exception as e:
             exception = e
