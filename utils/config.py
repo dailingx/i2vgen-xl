@@ -207,12 +207,16 @@ class Config(object):
     
     def _update_dict(self, cfg_dict):
         def recur(key, elem):
-            print(f'recur key: {key}, elem: {elem}')
             if type(elem) is dict:
                 return key, Config(load=False, cfg_dict=elem, cfg_level=key)
             else:
                 if type(elem) is str and elem[1:3]=="e-":
                     elem = float(elem)
+                # change args type
+                if key == 'target_fps':
+                    elem = int(elem)
+                if key == 'resolution':
+                    elem = json.loads(elem)
                 return key, elem
         dic = dict(recur(k, v) for k, v in cfg_dict.items())
         self.__dict__.update(dic)
