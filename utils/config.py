@@ -48,10 +48,10 @@ class Config(object):
             help="other configurations",
             default=None,
             nargs=argparse.REMAINDER)
-        parser.add_argument(
-            "target_fps",
-            default=10,
-            type=int)
+        # parser.add_argument(
+        #     "target_fps",
+        #     default=10,
+        #     type=int)
         return parser.parse_args()
 
     def _path_join(self, path_list):
