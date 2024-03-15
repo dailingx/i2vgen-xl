@@ -63,7 +63,13 @@ class Config(object):
     def _update_from_args(self, cfg_dict):
         args = self.args
         for var in vars(args):
-            cfg_dict[var] = getattr(args, var)
+            # change args type
+            val = getattr(args, var)
+            if var == 'target_fps':
+                val = int(val)
+            if var == 'resolution':
+                val = json.loads(val)
+            cfg_dict[var] = val
         return cfg_dict
 
     def _initialize_cfg(self):
