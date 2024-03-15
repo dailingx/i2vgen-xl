@@ -16,6 +16,8 @@ class Config(object):
             self.need_initialization = True
             cfg_base = self._initialize_cfg()
             cfg_dict = self._load_yaml(self.args)
+            # delete
+            print(f'Config cfg_dict: {cfg_dict}')
             cfg_dict = self._merge_cfg_from_base(cfg_base, cfg_dict)
             cfg_dict = self._update_from_args(cfg_dict)
             self.cfg_dict = cfg_dict
