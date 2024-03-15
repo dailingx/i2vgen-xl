@@ -187,7 +187,9 @@ def worker(gpu, cfg, cfg_update):
             image_tensor = image_tensor.unsqueeze(0)
             y_visual, y_text, y_words = clip_encoder(image=image_tensor, text=captions)
             y_visual = y_visual.unsqueeze(1)
-        
+
+        # delete
+        print(f'target_fps type: {type(cfg.target_fps)}')
         fps_tensor =  torch.tensor([cfg.target_fps], dtype=torch.long, device=gpu)
         image_id_tensor = train_trans([image]).to(gpu)
         local_image = autoencoder.encode_firsr_stage(image_id_tensor, cfg.scale_factor).detach()
