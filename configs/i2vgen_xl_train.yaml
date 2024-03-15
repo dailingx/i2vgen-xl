@@ -4,7 +4,8 @@ use_ema: true
 num_workers: 6
 frame_lens: [16, 16, 16, 16, 16, 32, 32, 32]
 sample_fps: [8,  8,  16, 16, 16, 8,  16, 16]
-resolution: [1280, 704]
+#resolution: [1280, 704]
+resolution: [512, 512]
 vit_resolution: [224, 224]
 vid_dataset: {
     'type': 'VideoDataset',
