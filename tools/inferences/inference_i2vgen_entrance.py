@@ -190,7 +190,7 @@ def worker(gpu, cfg, cfg_update):
 
         # delete
         print(f'target_fps type: {type(cfg.target_fps)}')
-        fps_tensor =  torch.tensor([cfg.target_fps], dtype=torch.long, device=gpu)
+        fps_tensor =  torch.tensor([int(cfg.target_fps)], dtype=torch.long, device=gpu)
         image_id_tensor = train_trans([image]).to(gpu)
         local_image = autoencoder.encode_firsr_stage(image_id_tensor, cfg.scale_factor).detach()
         local_image = local_image.unsqueeze(2).repeat_interleave(repeats=cfg.max_frames, dim=2)
