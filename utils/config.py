@@ -63,13 +63,7 @@ class Config(object):
     def _update_from_args(self, cfg_dict):
         args = self.args
         for var in vars(args):
-            # change args type
-            val = getattr(args, var)
-            if var == 'target_fps':
-                val = int(val)
-            if var == 'resolution':
-                val = json.loads(val)
-            cfg_dict[var] = val
+            cfg_dict[var] = getattr(args, var)
         return cfg_dict
 
     def _initialize_cfg(self):
@@ -213,6 +207,7 @@ class Config(object):
     
     def _update_dict(self, cfg_dict):
         def recur(key, elem):
+            print(f'recur key: {key}, elem: {elem}')
             if type(elem) is dict:
                 return key, Config(load=False, cfg_dict=elem, cfg_level=key)
             else:
