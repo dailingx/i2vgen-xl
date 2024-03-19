@@ -82,7 +82,7 @@ def worker(gpu, cfg, cfg_update):
     Inference worker for each gpu
     '''
     # delete
-    print(f'cfg: {cfg.target_fps}, type: {type(cfg.target_fps)}, cfg_update: {cfg_update.target_fps}, cfg_update type: {type(cfg_update.target_fps)}')
+    print(f'cfg_update: {cfg_update.target_fps}, cfg_update type: {type(cfg_update.target_fps)}')
     cfg = assign_signle_cfg(cfg, cfg_update, 'vldm_cfg')
     #delete
     print(f'{cfg.target_fps}, type: {type(cfg.target_fps)}')
