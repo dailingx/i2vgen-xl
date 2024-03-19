@@ -52,8 +52,6 @@ from utils.registry_class import INFER_ENGINE, MODEL, EMBEDDER, AUTO_ENCODER, DI
 @INFER_ENGINE.register_function()
 def inference_i2vgen_entrance(cfg_update,  **kwargs):
     for k, v in cfg_update.items():
-        if k == 'target_fps':
-            v = int(v)
         if isinstance(v, dict) and k in cfg:
             cfg[k].update(v)
         else:
@@ -89,6 +87,8 @@ def worker(gpu, cfg, cfg_update):
     #delete
     print(f'{cfg.target_fps}, type: {type(cfg.target_fps)}')
     for k, v in cfg_update.items():
+        if k == 'target_fps':
+            v = int(v)
         if isinstance(v, dict) and k in cfg:
             cfg[k].update(v)
         else:
