@@ -175,6 +175,8 @@ class CenterCropWide(object):
             img = [u.crop((x1, y1, x1 + self.size[0], y1 + self.size[1])) for u in img]
             return img
         else:
+            # delete
+            print(f'type: {type(img.size[0])} {type(img.size[1])} {type(self.size[0])} {type(self.size[1])}')
             scale = min(img.size[0]/self.size[0], img.size[1]/self.size[1])
             img = img.resize((round(img.width // scale), round(img.height // scale)), resample=Image.BOX)
             x1 = (img.width - self.size[0]) // 2
