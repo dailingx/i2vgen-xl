@@ -228,6 +228,8 @@ class Config(object):
         # delete
         print(f'_update_dict dic: {dic}')
         self.__dict__.update(dic)
+        # delete
+        print(f'__dict__ dic: {self.__dict__}')
     
     def get_args(self):
         return self.args
