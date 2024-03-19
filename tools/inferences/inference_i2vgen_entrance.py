@@ -81,7 +81,11 @@ def worker(gpu, cfg, cfg_update):
     '''
     Inference worker for each gpu
     '''
+    # delete
+    print(f'cfg: {cfg.target_fps}, type: {type(cfg.target_fps)}, cfg_update: {cfg_update.target_fps}, cfg_update type: {type(cfg_update.target_fps)}')
     cfg = assign_signle_cfg(cfg, cfg_update, 'vldm_cfg')
+    #delete
+    print(f'{cfg.target_fps}, type: {type(cfg.target_fps)}')
     for k, v in cfg_update.items():
         if isinstance(v, dict) and k in cfg:
             cfg[k].update(v)
