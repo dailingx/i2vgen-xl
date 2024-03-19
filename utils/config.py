@@ -214,15 +214,6 @@ class Config(object):
             else:
                 if type(elem) is str and elem[1:3]=="e-":
                     elem = float(elem)
-                # change args type
-                if key == 'target_fps':
-                    elem = int(elem)
-                    # delete
-                    print(f'target_fps type: {type(elem)}')
-                if key == 'resolution':
-                    elem = json.loads(elem)
-                    # delete
-                    print(f'resolution type: {type(elem)}')
                 return key, elem
         dic = dict(recur(k, v) for k, v in cfg_dict.items())
         # delete

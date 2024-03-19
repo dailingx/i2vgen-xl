@@ -89,6 +89,8 @@ def worker(gpu, cfg, cfg_update):
     for k, v in cfg_update.items():
         if k == 'target_fps':
             v = int(v)
+        if k == 'resolution':
+            v = json.loads(v)
         if isinstance(v, dict) and k in cfg:
             cfg[k].update(v)
         else:
