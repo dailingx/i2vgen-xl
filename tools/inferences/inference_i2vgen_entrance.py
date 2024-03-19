@@ -52,6 +52,8 @@ from utils.registry_class import INFER_ENGINE, MODEL, EMBEDDER, AUTO_ENCODER, DI
 @INFER_ENGINE.register_function()
 def inference_i2vgen_entrance(cfg_update,  **kwargs):
     for k, v in cfg_update.items():
+        if k == 'target_fps':
+            v = int(v)
         if isinstance(v, dict) and k in cfg:
             cfg[k].update(v)
         else:
