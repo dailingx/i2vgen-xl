@@ -215,8 +215,12 @@ class Config(object):
                 # change args type
                 if key == 'target_fps':
                     elem = int(elem)
+                    # delete
+                    print(f'target_fps type: {type(elem)}')
                 if key == 'resolution':
                     elem = json.loads(elem)
+                    # delete
+                    print(f'resolution type: {type(elem)}')
                 return key, elem
         dic = dict(recur(k, v) for k, v in cfg_dict.items())
         self.__dict__.update(dic)
