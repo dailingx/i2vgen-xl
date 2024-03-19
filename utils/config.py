@@ -229,7 +229,7 @@ class Config(object):
         print(f'_update_dict dic: {dic}')
         self.__dict__.update(dic)
         # delete
-        print(f'__dict__ dic: {self.__dict__}')
+        print(f'__dict__ dic: {self.__dict__}, target_fps: {self.target_fps}, type: {type(self.target_fps)}')
     
     def get_args(self):
         return self.args
