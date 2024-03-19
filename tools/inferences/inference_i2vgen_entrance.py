@@ -93,6 +93,8 @@ def worker(gpu, cfg, cfg_update):
             cfg[k].update(v)
         else:
             cfg[k] = v
+    # delete
+    print(f'update {cfg.target_fps}, type: {type(cfg.target_fps)}')
 
     cfg.gpu = gpu
     cfg.seed = int(cfg.seed)
