@@ -225,6 +225,8 @@ class Config(object):
                     print(f'resolution type: {type(elem)}')
                 return key, elem
         dic = dict(recur(k, v) for k, v in cfg_dict.items())
+        # delete
+        print(f'_update_dict dic: {dic}')
         self.__dict__.update(dic)
     
     def get_args(self):
