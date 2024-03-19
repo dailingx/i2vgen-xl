@@ -21,7 +21,7 @@ class Config(object):
             self.cfg_dict = cfg_dict
         self._update_dict(cfg_dict)
         #delete
-        print(f'_update_dict: {self.cfg_dict}')
+        print(f'_update_dict: {self.cfg_dict}, {self.cfg_dict.target_fps}, {type(self.cfg_dict.target_fps)}')
     
     def _parse_args(self):
         parser = argparse.ArgumentParser(
