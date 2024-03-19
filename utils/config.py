@@ -20,6 +20,8 @@ class Config(object):
             cfg_dict = self._update_from_args(cfg_dict)
             self.cfg_dict = cfg_dict
         self._update_dict(cfg_dict)
+        #delete
+        print(f'_update_dict: {self.cfg_dict}')
     
     def _parse_args(self):
         parser = argparse.ArgumentParser(
