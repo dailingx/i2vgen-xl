@@ -189,9 +189,9 @@ def worker(gpu, cfg, cfg_update):
         logging.info(f"[{idx}]/[{num_videos}] Begin to sample {line} ...")
         img_key, caption = line.split('|||')
         img_name = os.path.basename(img_key).split('.')[0]
-        if caption == "":
-            logging.info(f'Caption is null of {img_key}, skip..')
-            continue
+        # if caption == "":
+        #     logging.info(f'Caption is null of {img_key}, skip..')
+        #     continue
         captions = [caption]
         
         image = Image.open(img_key)
