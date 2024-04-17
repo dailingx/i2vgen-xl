@@ -15,3 +15,5 @@ use_zero_infer: True
 vldm_cfg: configs/i2vgen_xl_train.yaml
 test_list_path: data/test_list_for_i2vgen.txt
 test_model: models/i2vgen_xl_00854500.pth
+test_image_path:
+test_prompt:

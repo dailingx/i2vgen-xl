@@ -171,11 +171,16 @@ def worker(gpu, cfg, cfg_update):
     torch.cuda.empty_cache()
     
     # [Test List]
-    test_list = open(cfg.test_list_path).readlines()
-    test_list = [item.strip() for item in test_list]
-    num_videos = len(test_list)
-    logging.info(f'There are {num_videos} videos. with {cfg.round} times')
-    test_list = [item for item in test_list for _ in range(cfg.round)]
+    if cfg.test_image_path is None or cfg.test_image_path.strip() == '':
+        test_list = open(cfg.test_list_path).readlines()
+        test_list = [item.strip() for item in test_list]
+        num_videos = len(test_list)
+        logging.info(f'There are {num_videos} videos. with {cfg.round} times')
+        test_list = [item for item in test_list for _ in range(cfg.round)]
+    else:
+        line = cfg.test_image_path.strip() + '|||' + cfg.test_prompt.strip()
+        test_list = [line]
+        num_videos = 1
     
     for idx, line in enumerate(test_list):
         if line.startswith('#'):
