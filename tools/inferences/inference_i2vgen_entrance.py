@@ -87,7 +87,7 @@ def worker(gpu, cfg, cfg_update):
     #delete
     print(f'{cfg.target_fps}, type: {type(cfg.target_fps)}')
     for k, v in cfg_update.items():
-        if k == 'target_fps' or k == 'round':
+        if k == 'target_fps' or k == 'round' or k == 'max_frames':
             v = int(v)
         if k == 'resolution':
             v = json.loads(v)
