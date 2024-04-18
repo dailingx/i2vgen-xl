@@ -114,7 +114,7 @@ def worker(gpu, cfg, cfg_update):
     inf_name = osp.basename(cfg.cfg_file).split('.')[0]
     test_model = osp.basename(cfg.test_model).split('.')[0].split('_')[-1]
     
-    cfg.log_dir = osp.join(cfg.log_dir, '%s' % (exp_name))
+    # cfg.log_dir = osp.join(cfg.log_dir, '%s' % (exp_name))
     os.makedirs(cfg.log_dir, exist_ok=True)
     log_file = osp.join(cfg.log_dir, 'log_%02d.txt' % (cfg.rank))
     cfg.log_file = log_file
@@ -249,7 +249,10 @@ def worker(gpu, cfg, cfg_update):
         
         text_size = cfg.resolution[-1]
         cap_name = re.sub(r'[^\w\s]', '', caption).replace(' ', '_')
-        file_name = f'{img_name}_{cfg.world_size:02d}_{cfg.rank:02d}_{cap_name}_{idx:02d}.mp4'
+        if cfg.output_filename is None or cfg.output_filename == '':
+            file_name = f'{img_name}_{cfg.world_size:02d}_{cfg.rank:02d}_{cap_name}_{idx:02d}.mp4'
+        else:
+            file_name = cfg.output_filename
         local_path = os.path.join(cfg.log_dir, f'{file_name}')
         os.makedirs(os.path.dirname(local_path), exist_ok=True)
         try:

@@ -17,3 +17,4 @@ test_list_path: data/test_list_for_i2vgen.txt
 test_model: models/i2vgen_xl_00854500.pth
 test_image_path:
 test_prompt:
+output_filename:
